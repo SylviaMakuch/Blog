@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import heropic from "./../media/heropic.svg";
 import styled, { createGlobalStyle } from "styled-components";
 import importGoogleFonts from "import-google-fonts";
@@ -21,7 +21,7 @@ const Header = styled.h2`
 `;
 
 const Slogan = styled.p`
-  font-family: "System-ui";
+  font-family: sans-serif;
   font-weight: 100;
   font-size: 40px;
   text-transform: uppercase;
