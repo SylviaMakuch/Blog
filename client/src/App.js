@@ -3,6 +3,8 @@ import React from "react";
 import Hero from "./components/Hero/hero";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import Posts from "./components/Posts/posts";
+import Form from "./components/Form/form";
 
 function App() {
   return (
@@ -12,8 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Hero />} />
-          <Route path="/blog" element={<Hero />} />
-          <Route path="/blog" element={<Hero />} />
+          <Route path="/form" element={<Form />} />
         </Routes>
       </BrowserRouter> */}
     </div>
