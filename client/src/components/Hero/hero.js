@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import heropic from "./../media/heropic.svg";
 import styled, { createGlobalStyle } from "styled-components";
 import importGoogleFonts from "import-google-fonts";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 const GoogleFonts = importGoogleFonts(
   createGlobalStyle,
