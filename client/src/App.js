@@ -5,8 +5,10 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Posts from "./components/Posts/posts";
 import Form from "./components/Form/form";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispath = useDispatch();
   return (
     <div className="App">
       <Hero></Hero>
