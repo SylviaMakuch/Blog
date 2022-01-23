@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import Hero from "./components/Hero/hero";
 // import { Route, Routes, BrowserRouter } from "react-router-dom";
 // import ScrollToTop from "./components/ScrollToTop";
@@ -10,6 +9,7 @@ import { getPosts } from "./actions/post";
 
 function App() {
   const dispath = useDispatch();
+  
   useEffect(() => {
     dispath(getPosts());
   }, [dispath]);

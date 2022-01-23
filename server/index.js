@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+app.use('/posts', postRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://sylviamakuch:q0i1S6wSK4KqtAxl@cluster0.hh4yz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 5001;
