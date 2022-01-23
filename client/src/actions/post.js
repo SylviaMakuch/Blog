@@ -1,9 +1,14 @@
 import * as api from "../api"; //this mean we are importing from actions- as api and be able to use the fetchPosts from the axios file//
-api.fetchPosts;
 
 const getPosts = () => async (dispatch) => {
-  const action = { type: "FETCH_ALL", payload: [] };
+  try {
+    const { data } = await api.fetchPosts;
+
+    dispatch({ type: "FETCH_ALL", payload: [] });
+  } catch (error) {}
   dispatch(action);
 };
 //Action Creators, function returning actions, payload= stored data//
-// when working with async fx, we can use R.thunk, allowing us to specify an additional arrow fx
+// when working with async fx, we can use R.thunk, allowing us to specify an additional arrow fx which we will use async
+//now we have access to dispatch w/async//
+//catching all the data from API
