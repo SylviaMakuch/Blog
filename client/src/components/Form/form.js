@@ -22,29 +22,35 @@ const GoogleFonts = importGoogleFonts(
     color: white;
     margin-top: 100px;
   `;
+
+  const Form = styled.form
+  ``
   
 const
 export default function Form() {
+    const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+    const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
+    const dispatch = useDispatch();
     const  handleSubmit = () =>{
 
     }
     return(
         <MainDiv>
              <Header> Create a Post! </Header>
-            <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+            <Form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <label for="Creator">Author</label>
-                <input type="text" id="author" name="author" value={postData.creator} />
+                <input type="text" id="author" name="author" value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })}  />
                 <label for="Title">Title:</label>
-                <input type="text" id="title" name="title" value={postData.title} />
+                <input type="text" id="title" name="title" value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
                 <label for="Text">Text:</label>
-                <input type="text" id="text" name="text" value={postData.text}/>
+                <input type="text" id="text" name="message" value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })}/>
                 <label for="Text">Hastags:</label>
-                <input type="text" id="tags" name="tags"value={postData.tags}/>
+                <input type="text" id="tags" name="tags"value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value })}/>
 
                 
 
                 
-            </form>
+            </Form>
         </MainDiv>
     )
 }
