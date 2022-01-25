@@ -6,7 +6,7 @@ import Hero from "./components/Hero/hero";
 // import Form from "./components/Form/form";
 import { useDispatch } from 'react-redux';
 import { getPosts } from "./actions/post";
-
+import Form from "./components/Form/form";
 function App() {
   const dispath = useDispatch();
   
@@ -17,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <Hero></Hero>
+      <Form></Form>
       {/* <ScrollToTop />
       <BrowserRouter>
         <Routes>
