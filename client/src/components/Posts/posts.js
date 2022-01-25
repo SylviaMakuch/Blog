@@ -3,16 +3,19 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import Post from "./Post/Post";
+const MediaDiv = styled.div`
+  display: flex;
+`;
 
 const Posts = () => {
   const posts = useSelector((state) => state.posts);
   console.log(Posts);
   return (
-    <>
-      <h1>Posts!</h1>
-      <Post />
-    </>
-  );
+   !posts.length ? <CircularProgress /> : (
+     <MediaDiv>
+
+     </MediaDiv>
+   );
 };
 
 export default Posts;
