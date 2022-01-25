@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import importGoogleFonts from "import-google-fonts";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
+import { createPost } from "../../actions/post";
 
 const MainDiv = styled.div`
   display: flex;
@@ -83,9 +84,13 @@ function Form() {
     tags: "",
     selectedFile: "",
   });
-  // const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
-  const dispatch = useDispatch();
-  const handleSubmit = () => {};
+  const dispatch =useDispatch;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(createPost(postData));
+  };
+
   return (
     <MainDiv>
       <Header> Create a Post! </Header>
