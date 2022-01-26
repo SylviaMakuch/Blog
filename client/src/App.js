@@ -4,20 +4,19 @@ import Hero from "./components/Hero/hero";
 // import ScrollToTop from "./components/ScrollToTop";
 
 // import Form from "./components/Form/form";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { getPosts } from "./actions/post";
 import Form from "./components/Form/form";
 import Posts from "./components/Posts/posts";
 import Post from "./components/Post/post";
 
-
 function App() {
   const dispath = useDispatch();
   const [currentId, setCurrentId] = useState(0);
-  
+
   useEffect(() => {
     dispath(getPosts());
-  }, [currentId,dispath]);
+  }, [currentId, dispath]);
 
   return (
     <div className="App">
