@@ -19,7 +19,7 @@ const Card = styled.div`
   height: 400px;
   width: 300px;
   border-radius: 25px;
-  margin: 10px;
+  padding: 10px 15px;
 `;
 
 const Typography = styled.p`

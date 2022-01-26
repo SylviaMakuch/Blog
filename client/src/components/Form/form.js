@@ -48,6 +48,11 @@ const Forum = styled.form`
   font-size: large;
 `;
 
+const H3 = styled.h2`
+color: coral;
+text-align: center;
+`
+
 const Button = styled.button`
   background-image: linear-gradient(
     to right,
@@ -85,16 +90,15 @@ function Form({ currentId, setCurrentId}) {
     selectedFile: "",
   });
   const dispatch = useDispatch;
-  const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
-
+  const post = useSelector((state) => (currentId ? state.posts.find((p) => p._id === currentId) : null));
+  const clear = () => {
+    setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+  };
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
 
-  const clear = () => {
-    setCurrentId(0);
-    setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -104,14 +108,15 @@ function Form({ currentId, setCurrentId}) {
       clear();
     } else {
       dispatch(updatePost(currentId, postData));
-      clear();
     }
+    clear();
   };
 
   return (
     <MainDiv>
       <Header> Create a Post! </Header>
       <Forum autoComplete="off" onSubmit={handleSubmit}>
+      <H3> {currentId ? 'Editing': 'Creating' }</H3>
         <label for="Creator">Author</label>
         <input
           type="text"
@@ -160,6 +165,10 @@ function Form({ currentId, setCurrentId}) {
         <ButtonDiv>
           <Button type="submit">Submit</Button>
         </ButtonDiv>
+        <ButtonDiv>
+          <Button onClick={clear}>clear</Button>
+        </ButtonDiv>
+
       </Forum>
     </MainDiv>
   );
