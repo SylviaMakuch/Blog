@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import importGoogleFonts from "import-google-fonts";
 import { useDispatch, useSelector } from "react-redux";
@@ -76,7 +76,7 @@ const Button = styled.button`
   }
 `;
 
-function Form({currentId, currentId}) {
+function Form({ currentId, setCurrentId}) {
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -85,13 +85,26 @@ function Form({currentId, currentId}) {
     selectedFile: "",
   });
   const dispatch = useDispatch;
+  const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
+
+  useEffect(() => {
+    if (post) setPostData(post);
+  }, [post]);
+
+  const clear = () => {
+    setCurrentId(0);
+    setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (currentId) {
-      dispatch(createPost(currentID,updatePost));
-    } else{
-    dispatch(createPost(postData));
+
+    if (currentId === 0) {
+      dispatch(createPost(postData));
+      clear();
+    } else {
+      dispatch(updatePost(currentId, postData));
+      clear();
     }
   };
 

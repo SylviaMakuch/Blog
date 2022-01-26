@@ -1,34 +1,35 @@
 import React from "react";
 import Post from "../Post/post";
-import {  CircularProgress } from '@material-ui/core';
+import { CircularProgress } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 const MainDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 500px;
 `;
 
 const Card = styled.div`
   height: 100px;
+  margin-top: 400px;
 `;
 
 const Posts = ({ setCurrentId }) => {
   const posts = useSelector((state) => state.posts);
 
-
-  return (
-    !posts.length ? <CircularProgress /> : (
+  return !posts.length ? (
+    <CircularProgress />
+  ) : (
     <MainDiv>
       {posts.map((post) => (
         <Card key={post.id}>
-         <Post post={post} setCurrentId={setCurrentId} />
+          <Post post={post} setCurrentId={setCurrentId} />
         </Card>
       ))}
     </MainDiv>
-  )
   );
 };
 export default Posts;
