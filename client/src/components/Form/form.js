@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import importGoogleFonts from "import-google-fonts";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
-import { createPost } from "../../actions/post";
+import { createPost, updatePost } from "../../actions/post";
 
 const MainDiv = styled.div`
   display: flex;
@@ -76,7 +76,7 @@ const Button = styled.button`
   }
 `;
 
-function Form() {
+function Form({currentId, currentId}) {
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -84,11 +84,15 @@ function Form() {
     tags: "",
     selectedFile: "",
   });
-  const dispatch =useDispatch;
+  const dispatch = useDispatch;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (currentId) {
+      dispatch(createPost(currentID,updatePost));
+    } else{
     dispatch(createPost(postData));
+    }
   };
 
   return (
@@ -148,3 +152,6 @@ function Form() {
   );
 }
 export default Form;
+
+
+//currentID required to link with form to edit it from the post 
