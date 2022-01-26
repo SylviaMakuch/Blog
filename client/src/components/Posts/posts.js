@@ -1,9 +1,8 @@
 import React from "react";
-// import { Grid, CircularProgress } from '@material-ui/core';
-import { useSelector } from "react-redux";
 import Post from "../Post/post";
-
-import Post from "./Post/Post";
+import {  CircularProgress } from '@material-ui/core';
+import { useSelector } from "react-redux";
+import styled from "styled-components";
 const MainDiv = styled.div`
   display: flex;
 `;
@@ -12,22 +11,22 @@ const Card = styled.div`
   height: 100px;
 `;
 
-const Posts = () => {
+const Posts = ({ setCurrentId }) => {
   const posts = useSelector((state) => state.posts);
-  console.log(Posts);
-  return !posts.length ? (
-    <CircularProgress />
-  ) : (
+
+
+  return (
+    !posts.length ? <CircularProgress /> : (
     <MainDiv>
       {posts.map((post) => (
         <Card key={post.id}>
-          <Post post={post} />
+         <Post post={post} setCurrentId={setCurrentId} />
         </Card>
       ))}
     </MainDiv>
+  )
   );
 };
-
 export default Posts;
 
 //useSelector will allow us to have access to our global state .: we will have access to Reducers>posts
