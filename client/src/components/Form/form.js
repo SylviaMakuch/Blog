@@ -25,13 +25,13 @@ const GoogleFonts = importGoogleFonts(
   ["Aclonica"]
 );
 
-const Header = styled.h2`
+const Header = styled.h1`
   font-family: "Abril Fatface";
   font-size: 90px;
   font-weight: 700;
   line-height: 94px;
   color: white;
-  margin-top: 100px;
+
 `;
 
 const Forum = styled.form`
@@ -44,14 +44,14 @@ const Forum = styled.form`
   flex-direction: column;
   color: white;
   font-family: monospace;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: large;
 `;
 
-const H3 = styled.h2`
-color: coral;
-text-align: center;
-`
+const H3 = styled.h1`
+  color: coral;
+  text-align: center;
+`;
 
 const Button = styled.button`
   background-image: linear-gradient(
@@ -60,7 +60,8 @@ const Button = styled.button`
     #00dbde 51%,
     #fc00ff 100%
   );
-  margin-left: 50px;
+  
+  margin: 50px 0px;
   font-family: "Aclonica";
   font-size: 20px;
   margin: 10px;
@@ -81,7 +82,28 @@ const Button = styled.button`
   }
 `;
 
-function Form({ currentId, setCurrentId}) {
+const Button2 = styled.button`
+  display: inline-block;
+   padding: 0.35em 1.2em;
+   border: 0.1em solid #ffffff;
+   margin: 0 0.3em 0.3em 0;
+   border-radius: 0.12em;
+   box-sizing: border-box;
+   text-decoration: none;
+   font-family: "Roboto", sans-serif;
+   font-weight: 300;
+   color: #ffffff;
+   text-align: center;
+   background-color: #ffffff00;
+   height: 32px;
+
+  &:hover {
+     color: #000000;
+     background-color: #ffffff;
+  }
+`;
+
+function Form({ currentId, setCurrentId }) {
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -90,15 +112,21 @@ function Form({ currentId, setCurrentId}) {
     selectedFile: "",
   });
   const dispatch = useDispatch;
-  const post = useSelector((state) => (currentId ? state.posts.find((p) => p._id === currentId) : null));
+  const post = useSelector((state) =>
+    currentId ? state.posts.find((p) => p._id === currentId) : null
+  );
   const clear = () => {
-    setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
   };
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -111,12 +139,12 @@ function Form({ currentId, setCurrentId}) {
     }
     clear();
   };
-
+ 
   return (
     <MainDiv>
       <Header> Create a Post! </Header>
       <Forum autoComplete="off" onSubmit={handleSubmit}>
-      <H3> {currentId ? 'Editing': 'Creating' }</H3>
+        <H3> {currentId ? "Editing" : "Creating"}</H3>
         <label for="Creator">Author</label>
         <input
           type="text"
@@ -166,14 +194,12 @@ function Form({ currentId, setCurrentId}) {
           <Button type="submit">Submit</Button>
         </ButtonDiv>
         <ButtonDiv>
-          <Button onClick={clear}>clear</Button>
+          <Button2 onClick={clear}>clear</Button2>
         </ButtonDiv>
-
       </Forum>
     </MainDiv>
   );
 }
 export default Form;
 
-
-//currentID required to link with form to edit it from the post 
+//currentID required to link with form to edit it from the post
