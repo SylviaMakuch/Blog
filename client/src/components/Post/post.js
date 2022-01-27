@@ -12,7 +12,7 @@ import moment from "moment";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
-// import { likePost, deletePost } from "../../../actions/posts";
+import { likePost, deletePost } from "../../actions/post";
 
 const Card = styled.div`
   background-color: #08080a73;
