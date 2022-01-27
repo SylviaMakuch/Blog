@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <Hero />
       <Posts setCurrentId={setCurrentId} />
-      <Form currentId={currentId} />
+      <Form currentId={currentId} setCurrentId={setCurrentId}/>
       {/* <ScrollToTop />
       <BrowserRouter>
         <Routes>

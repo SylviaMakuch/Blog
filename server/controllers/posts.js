@@ -34,6 +34,7 @@ export const createPost = async (req, res) => {
 
     try {
         await newPostMessage.save();
+        console.log("creating")
 
         res.status(201).json(newPostMessage );
     } catch (error) {

@@ -111,10 +111,12 @@ function Form({ currentId, setCurrentId }) {
     tags: "",
     selectedFile: "",
   });
+
   const dispatch = useDispatch;
   const post = useSelector((state) =>
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
+
   const clear = () => {
     setPostData({
       creator: "",
@@ -131,7 +133,7 @@ function Form({ currentId, setCurrentId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (currentId === 0) {
+    if (currentId === null) {
       dispatch(createPost(postData));
       clear();
     } else {
