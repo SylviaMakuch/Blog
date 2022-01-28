@@ -11,20 +11,12 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { likePost, deletePost } from "../../actions/post";
-import styled, { createGlobalStyle } from "styled-components";
-import importGoogleFonts from "import-google-fonts";
-
-const GoogleFonts = importGoogleFonts(
-  createGlobalStyle,
-  ["Abril Fatface"],
-  ["Aclonica"],
-  ["Roboto"]
-);
+import styled from "styled-components";
 
 const Card = styled.div`
   background-color: #08080a73;
   height: 450px;
-  width: 300px;
+  width: 330px;
   border-radius: 25px;
   margin: 20px;
   display: flex;
@@ -34,7 +26,7 @@ const Card = styled.div`
 
 const ImageFile = styled.img`
   height: 450px;
-  width: 300px; 
+  width: 330px;
   z-index: -1;
   position: absolute;
   border-radius: 25px;
@@ -42,6 +34,12 @@ const ImageFile = styled.img`
 
 const Typography = styled.p`
   color: white;
+  font-family: 'Rubik', sans-serif;
+  text-align: center;
+`;
+const Message = styled.p`
+  color: white;
+  font-family: 'Rubik', sans-serif;
 `;
 
 const CreatorTimeDiv = styled.div`
@@ -52,10 +50,12 @@ const CreatorTimeDiv = styled.div`
 `;
 
 const Title = styled.h2`
-font-style:'Roboto';
-color: white;
-text-align: center;
-text-shadow: 2px 2px black; 
+  font-family: "Abril Fatface";
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px black;
+  font-size: 25px;
+  letter-spacing: 0.8px;
 `;
 
 const Post = ({ post, setCurrentId }) => {
@@ -73,9 +73,9 @@ const Post = ({ post, setCurrentId }) => {
       <div></div>
       <Title>{post.title}</Title>
       <CardContent>
-        <Typography variant="body2" color="textPrimary" component="p">
+        <Message>
           {post.message}
-        </Typography>
+        </Message>
       </CardContent>
       <div>
         <Typography variant="body2" color="textSecondary" component="h2">
@@ -85,14 +85,14 @@ const Post = ({ post, setCurrentId }) => {
       <CardActions style={{ display: "flex", justifyContent: "space-evenly" }}>
         <Button
           size="small"
-          color="primary"
+          color="secondary"
           onClick={() => dispatch(likePost(post._id))}
         >
           <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
         </Button>
         <Button
           size="small"
-          color="primary"
+          color="secondary"
           onClick={() => dispatch(deletePost(post._id))}
         >
           <DeleteIcon fontSize="small" /> Delete
