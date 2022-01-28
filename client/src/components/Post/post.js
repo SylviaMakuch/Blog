@@ -32,7 +32,7 @@ const Post = ({ post, setCurrentId }) => {
 
   return (
     <Card  style={{ backgroundColor: "#08080a73", padding: "10px 15px"
-    , margin: "20px"  }}>
+    , margin: "20px", width: "300px" , height: "450px", borderRadius: "13px" }}>
       <CardMedia image={post.selectedFile} title={post.title} />
       <div>
         <Typography variant="h6">{post.creator}</Typography>

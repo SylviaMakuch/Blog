@@ -13,8 +13,7 @@ const MainDiv = styled.div`
 `;
 
 const Card = styled.div`
-  height: 100px;
-  margin-top: 400px;
+
 `;
 
 const Posts = ({ setCurrentId }) => {

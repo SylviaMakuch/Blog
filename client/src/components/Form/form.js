@@ -157,6 +157,7 @@ const Form = ({ currentId, setCurrentId }) => {
           type="text"
           id="text"
           name="message"
+          maxlength = "230"
           value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
