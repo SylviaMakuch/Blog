@@ -32,10 +32,11 @@ const PageDiv = styled.div`
   display: flex;
   justify-content: center;
   align-content:center; 
-  margin: 70px 200px;
+  margin: 70px ;
   flex-wrap: wrap;
-  /* width: 1800px;
-  background: #8b819142; */
+  background: #433c4836;
+  align-items: center;
+  width: 80%;
 `;
 
 const TextDiv = styled.div`
@@ -50,6 +51,7 @@ const MediaDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 100px;
 `;
 
 const HeroPic = styled.img`

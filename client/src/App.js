@@ -9,10 +9,11 @@ import styled from "styled-components";
 
 const MainDiv = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin: 20px;
   flex-wrap: nowrap;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
 `;
 
 function App() {
@@ -24,13 +25,11 @@ function App() {
   }, [currentId, dispath]);
 
   return (
-    <div className="App">
+    <MainDiv>
       <Hero />
-      <MainDiv>
-        <Posts setCurrentId={setCurrentId} />
-      </MainDiv>
-       <Form currentId={currentId} setCurrentId={setCurrentId} />
-    </div>
+      <Posts setCurrentId={setCurrentId} />
+      <Form currentId={currentId} setCurrentId={setCurrentId} />
+    </MainDiv>
   );
 }
 

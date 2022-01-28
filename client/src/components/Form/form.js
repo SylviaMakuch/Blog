@@ -54,7 +54,7 @@ const Forum = styled.form`
   font-family: monospace;
   justify-content: space-between;
   font-size: large;
-  border: 5px solid pink;
+  border: 2px solid pink;
 `;
 
 const H3 = styled.h1`

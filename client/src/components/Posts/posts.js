@@ -10,7 +10,7 @@ const MainDiv = styled.div`
   align-content: center;
   justify-content: center;
   align-items: center;
-  margin-top:100px;
+  margin: 200px 0px;
 `;
 
 const Card = styled.div`
