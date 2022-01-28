@@ -11,6 +11,7 @@ const MainDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin: 200px 0px;
+  max-width: 1800px;
 `;
 
 const Card = styled.div`
