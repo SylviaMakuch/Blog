@@ -87,7 +87,7 @@ export default function Hero() {
       </TextDiv>
       <MediaDiv>
         <HeroPic src={heropic}></HeroPic>
-        <Button onClick={() => document.getElementById("form").scrollTo()}> Create </Button>
+        <Button onClick={() => document.getElementById("form").scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})}> Create </Button>
       </MediaDiv>
     </PageDiv>
   );

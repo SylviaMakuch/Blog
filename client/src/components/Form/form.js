@@ -4,6 +4,7 @@ import importGoogleFonts from "import-google-fonts";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
 import { createPost, updatePost } from "../../actions/post";
+import formpic from "../media/formpic.svg";
 
 const MainDiv = styled.div`
   display: flex;
@@ -31,14 +32,13 @@ const Header = styled.h1`
   font-weight: 700;
   line-height: 94px;
   color: white;
-
 `;
 
 const Forum = styled.form`
   background-color: #08080a45;
-  height: 500px;
-  width: 300px;
-  padding: 100px;
+  height: 700px;
+  width: 400px;
+  padding: 40px 80px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -46,12 +46,18 @@ const Forum = styled.form`
   font-family: monospace;
   justify-content: space-between;
   font-size: large;
+  border: 5px solid pink;
 `;
 
 const H3 = styled.h1`
   color: coral;
   text-align: center;
 `;
+
+const Image= styled.div`
+height: 500px;
+width: 500px;
+`
 
 const Button = styled.button`
   background-image: linear-gradient(
@@ -60,7 +66,7 @@ const Button = styled.button`
     #00dbde 51%,
     #fc00ff 100%
   );
-  
+
   margin: 50px 0px;
   font-family: "Aclonica";
   font-size: 20px;
@@ -94,8 +100,8 @@ const Button2 = styled.button`
    font-weight: 300;
    color: #ffffff;
    text-align: center;
-   background-color: #ffffff00;
-   height: 32px;
+  background-color: #ffffff00;
+  height: 32px;
 
   &:hover {
      color: #000000;
@@ -104,8 +110,16 @@ const Button2 = styled.button`
 `;
 
 const Form = ({ currentId, setCurrentId }) => {
-  const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
-  const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
+  const [postData, setPostData] = useState({
+    creator: "",
+    title: "",
+    message: "",
+    tags: "",
+    selectedFile: "",
+  });
+  const post = useSelector((state) =>
+    currentId ? state.posts.find((message) => message._id === currentId) : null
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -114,7 +128,13 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const clear = () => {
     setCurrentId(0);
-    setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -131,7 +151,8 @@ const Form = ({ currentId, setCurrentId }) => {
 
   return (
     <MainDiv id="form">
-      <Header> Create a Post! </Header>
+      <Image src={formpic} />
+      <Header> {currentId ? "Editing" : "Create"} a Post! </Header>
       <Forum autoComplete="off" onSubmit={handleSubmit}>
         <H3> {currentId ? "Editing" : "Creating"}</H3>
         <label for="Creator">Author</label>
@@ -157,7 +178,7 @@ const Form = ({ currentId, setCurrentId }) => {
           type="text"
           id="text"
           name="message"
-          maxLength = "300"
+          maxLength="300"
           value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
@@ -168,7 +189,7 @@ const Form = ({ currentId, setCurrentId }) => {
           type="text"
           id="tags"
           name="tags"
-          maxLength = "30"
+          maxLength="30"
           value={postData.tags}
           onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
         />
@@ -190,7 +211,7 @@ const Form = ({ currentId, setCurrentId }) => {
       </Forum>
     </MainDiv>
   );
-}
+};
 export default Form;
 
 //currentID required to link with form to edit it from the post

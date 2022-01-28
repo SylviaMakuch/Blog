@@ -78,21 +78,21 @@ const Post = ({ post, setCurrentId }) => {
         </Message>
       </CardContent>
       <div>
-        <Typography variant="body2" color="textSecondary" component="h2">
+        <Typography variant="body2" style={{color: "#8947ef"}} component="h2">
           {post.tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
       <CardActions style={{ display: "flex", justifyContent: "space-evenly" }}>
         <Button
           size="small"
-          color="secondary"
+          style={{color: "#8947ef"}}
           onClick={() => dispatch(likePost(post._id))}
         >
           <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
         </Button>
         <Button
           size="small"
-          color="secondary"
+          style={{color: "#8947ef"}}
           onClick={() => dispatch(deletePost(post._id))}
         >
           <DeleteIcon fontSize="small" /> Delete
