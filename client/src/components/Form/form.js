@@ -103,45 +103,32 @@ const Button2 = styled.button`
   }
 `;
 
-function Form({ currentId, setCurrentId }) {
-  const [postData, setPostData] = useState({
-    creator: "",
-    title: "",
-    message: "",
-    tags: "",
-    selectedFile: "",
-  });
+const Form = ({ currentId, setCurrentId }) => {
+  const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+  const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch;
-  const post = useSelector((state) =>
-    currentId ? state.posts.find((p) => p._id === currentId) : null
-  );
-
-  const clear = () => {
-    setPostData({
-      creator: "",
-      title: "",
-      message: "",
-      tags: "",
-      selectedFile: "",
-    });
-  };
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
 
+  const clear = () => {
+    setCurrentId(0);
+    setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (currentId === null) {
+    if (currentId === 0) {
       dispatch(createPost(postData));
       clear();
     } else {
       dispatch(updatePost(currentId, postData));
+      clear();
     }
-    clear();
   };
- 
+
   return (
     <MainDiv>
       <Header> Create a Post! </Header>

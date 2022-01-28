@@ -19,8 +19,7 @@ const Card = styled.div`
 
 const Posts = ({ setCurrentId }) => {
   const posts = useSelector((state) => state.posts);
-  console.log((setCurrentId))
-
+console.log(posts)
   return !posts.length ? (
     <CircularProgress />
   ) : (

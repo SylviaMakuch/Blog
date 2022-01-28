@@ -1,5 +1,5 @@
 import React from "react";
-import {
+import {Card,
   CardActions,
   CardContent,
   CardMedia,
@@ -14,13 +14,14 @@ import styled from "styled-components";
 
 import { likePost, deletePost } from "../../actions/post";
 
-const Card = styled.div`
-  background-color: #08080a73;
-  height: 400px;
-  width: 300px;
-  border-radius: 25px;
-  padding: 10px 15px;
-`;
+// const Card = styled.div`
+//   background-color: #08080a73;
+//   height: 400px;
+//   width: 300px;
+//   border-radius: 25px;
+//   padding: 10px 15px;
+//   margin: 20px;
+// `;
 
 const Typography = styled.p`
   color: white;
@@ -30,7 +31,8 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
 
   return (
-    <Card>
+    <Card  style={{ backgroundColor: "#08080a73", padding: "10px 15px"
+    , margin: "20px"  }}>
       <CardMedia image={post.selectedFile} title={post.title} />
       <div>
         <Typography variant="h6">{post.creator}</Typography>
@@ -40,7 +42,7 @@ const Post = ({ post, setCurrentId }) => {
       </div>
       <div>
         <Button
-          style={{ color: "white" }}
+          style={{ color: "white"}}
           size="small"
           onClick={() => setCurrentId(post._id)}
         >
