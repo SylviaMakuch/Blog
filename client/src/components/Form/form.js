@@ -130,7 +130,7 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   return (
-    <MainDiv>
+    <MainDiv id="form">
       <Header> Create a Post! </Header>
       <Forum autoComplete="off" onSubmit={handleSubmit}>
         <H3> {currentId ? "Editing" : "Creating"}</H3>
@@ -157,7 +157,7 @@ const Form = ({ currentId, setCurrentId }) => {
           type="text"
           id="text"
           name="message"
-          maxlength = "230"
+          maxLength = "230"
           value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })

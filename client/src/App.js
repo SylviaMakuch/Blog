@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Hero from "./components/Hero/hero";
 // import ScrollToTop from "./components/ScrollToTop";
 import { useDispatch } from "react-redux";
@@ -28,8 +28,8 @@ function App() {
       <Hero />
       <MainDiv>
         <Posts setCurrentId={setCurrentId} />
-        <Form currentId={currentId} setCurrentId={setCurrentId} />
       </MainDiv>
+       <Form currentId={currentId} setCurrentId={setCurrentId} />
     </div>
   );
 }
