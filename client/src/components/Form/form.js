@@ -157,7 +157,7 @@ const Form = ({ currentId, setCurrentId }) => {
           type="text"
           id="text"
           name="message"
-          maxLength = "230"
+          maxLength = "300"
           value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
@@ -168,6 +168,7 @@ const Form = ({ currentId, setCurrentId }) => {
           type="text"
           id="tags"
           name="tags"
+          maxLength = "30"
           value={postData.tags}
           onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
         />

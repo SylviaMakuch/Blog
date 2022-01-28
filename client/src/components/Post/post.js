@@ -15,8 +15,8 @@ import styled from "styled-components";
 
 const Card = styled.div`
     background-image: linear-gradient(to bottom, #ff000000 , #000000e0);
-  height: 450px;
-  width: 330px;
+  height: 480px;
+  width: 350px;
   border-radius: 25px;
   margin: 20px;
   display: flex;
@@ -25,8 +25,8 @@ const Card = styled.div`
 `;
 
 const ImageFile = styled.img`
-  height: 450px;
-  width: 330px;
+  height: 480px;
+  width: 350px;
   z-index: -1;
   position: absolute;
   border-radius: 25px;
