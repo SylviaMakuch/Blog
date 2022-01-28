@@ -3,13 +3,14 @@ import Post from "../Post/post";
 import { CircularProgress } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+
 const MainDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
   align-items: center;
-  margin-bottom: 500px;
+  margin-top:100px;
 `;
 
 const Card = styled.div`

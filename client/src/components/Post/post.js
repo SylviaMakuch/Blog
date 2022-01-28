@@ -14,7 +14,7 @@ import { likePost, deletePost } from "../../actions/post";
 import styled from "styled-components";
 
 const Card = styled.div`
-    background-image: linear-gradient(to bottom, #ff000000 , #000000e0);
+  background-image: linear-gradient(to bottom, #ff000000 , #000000e0);
   height: 480px;
   width: 350px;
   border-radius: 25px;
