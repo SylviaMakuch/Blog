@@ -30,14 +30,19 @@ const Slogan = styled.p`
 
 const PageDiv = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin: 20px;
+  justify-content: center;
+  align-content:center; 
+  margin: 70px 200px;
   flex-wrap: wrap;
+  /* width: 1800px;
+  background: #8b819142; */
 `;
 
 const TextDiv = styled.div`
   align-content: center;
   justify-content: center;
+  text-align:center;
+  margin: 100px;
 `;
 
 const MediaDiv = styled.div`

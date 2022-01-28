@@ -8,6 +8,14 @@ import formpic from "../media/formpic.svg";
 
 const MainDiv = styled.div`
   display: flex;
+  align-items: center;
+  flex: wrap;
+  justify-content: center;
+  border-top: 120px;
+  flex-wrap: wrap;
+`;
+const FormDiv = styled.div`
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -54,9 +62,9 @@ const H3 = styled.h1`
   text-align: center;
 `;
 
-const Image= styled.div`
-height: 500px;
-width: 500px;
+const Image= styled.img`
+height: 900px;
+width: 900px;
 `
 
 const Button = styled.button`
@@ -152,9 +160,10 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <MainDiv id="form">
       <Image src={formpic} />
+      <FormDiv>
       <Header> {currentId ? "Editing" : "Create"} a Post! </Header>
       <Forum autoComplete="off" onSubmit={handleSubmit}>
-        <H3> {currentId ? "Editing" : "Creating"}</H3>
+        <H3> {currentId ? "Editing your post" : "Write.."}</H3>
         <label for="Creator">Author</label>
         <input
           type="text"
@@ -209,6 +218,7 @@ const Form = ({ currentId, setCurrentId }) => {
           <Button2 onClick={clear}>clear</Button2>
         </ButtonDiv>
       </Forum>
+      </FormDiv>
     </MainDiv>
   );
 };
