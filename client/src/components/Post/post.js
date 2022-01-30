@@ -22,6 +22,10 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* &:hover {
+    transform: translateY(-10px);
+     background-image: linear-gradient(to bottom, #ff000000 , #000000e0);
+  } */
 `;
 
 const ImageFile = styled.img`

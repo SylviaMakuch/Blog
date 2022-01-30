@@ -26,7 +26,7 @@ console.log(posts)
   ) : (
     <MainDiv>
       {posts.map((post) => (
-        <Card key={post.id}>
+        <Card key={post._id}>
           <Post post={post} setCurrentId={setCurrentId} />
         </Card>
       ))}
