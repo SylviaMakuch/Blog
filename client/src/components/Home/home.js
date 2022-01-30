@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "../Hero/hero";
 // import ScrollToTop from "./components/ScrollToTop";
 import { useDispatch } from "react-redux";
@@ -6,7 +6,6 @@ import { getPosts } from "../../actions/post";
 import Form from "../Form/form";
 import Posts from "../Posts/posts";
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
 
 
 const MainDiv = styled.div`

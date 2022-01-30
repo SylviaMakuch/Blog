@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react";
+import { Link } from "react-router-dom";
 import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
+import Auth from "../../Auth/auth";
 
 const Profile = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ return (
             <Button variant="contained" color="secondary" >Logout</Button>
           </Profile>
         ) : (
-          <Button variant="contained" color="primary">Sign In</Button>
+         <Link to="/auth" component={<Auth />}> <Button variant="contained" color="primary"> Sign In</Button></Link>
         )}
       </Toolbar>
     </AppBar>
