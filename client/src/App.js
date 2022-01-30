@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+import Home from "./components/Home/home";
 
 const MainDiv = styled.div`
   display: flex;
@@ -18,7 +19,8 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
-          <Route></Route>
+          <Route path="/" element={<Home />}></Route>
+          {/* <Route path="/auth" element={<Auth />}></Route> */}
         </Routes>
       </BrowserRouter>
     </MainDiv>
