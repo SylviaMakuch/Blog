@@ -12,6 +12,7 @@ import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import styled from "styled-components";
+import Input from "./input";
 
 const MainDiv = styled.div`
   display: flex;
@@ -23,10 +24,19 @@ const MainDiv = styled.div`
 `;
 
 const Form = styled.div`
+  background-color: #08080a45;
+  height: 700px;
+  width: 400px;
+  padding: 40px 80px;
+  margin: 100px;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  color: white;
+  font-family: monospace;
+  justify-content: space-between;
+  font-size: large;
+  border: 2px solid pink;
 `;
 
 const FormDiv = styled.div`
@@ -37,15 +47,22 @@ const FormDiv = styled.div`
 `;
 
 const Auth = () => {
-  return (
+    const isSignup = false;
+    const handleSubmit = () =>{
+        
+    };
+
+    const handleChange = () => {
+
+    };
+  return ( 
     <MainDiv>
       <Form>
-          <h1>hellow !!!</h1>
-        {/* <Avatar >
+          <h1> { isSignup ? 'Sign up' : 'Sign in' }</h1>
+        <Avatar >
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">{ isSignup ? 'Sign up' : 'Sign in' }</Typography>
-        <form onSubmit={handleSubmit}>
+        <form >
             <FormDiv>
                   { isSignup && (
             <>
@@ -60,10 +77,10 @@ const Auth = () => {
             <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             { isSignup ? 'Sign Up' : 'Sign In' }
           </Button>
-          <GoogleLogin
+          {/* <GoogleLogin
             clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
             render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
+              <Button color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                 Google Sign In
               </Button>
             )}
@@ -71,14 +88,14 @@ const Auth = () => {
             onFailure={googleError}
             cookiePolicy="single_host_origin"
           />
-            <Grid container justify="flex-end">
-            <Grid item>
+            <Grid container justify="flex-end"> */}
+            {/* <Grid item>
               <Button onClick={switchMode}>
                 { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
               </Button>
-            </Grid>
-          </Grid>
-        </form> */}
+            </Grid> */}
+          {/* </Grid> */}
+        </form>
       </Form>
     </MainDiv>
   );
