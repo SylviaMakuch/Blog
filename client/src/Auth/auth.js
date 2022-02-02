@@ -24,7 +24,12 @@ const MainDiv = styled.div`
 `;
 
 const Form = styled.div`
-  background-color: #08080a45;
+  background-image: linear-gradient(
+    to bottom,
+    #fc00ffd6 0%,
+    #ce7effa1 51%,
+    #140d18ad 100%
+  );
   height: 700px;
   width: 400px;
   padding: 40px 80px;
@@ -34,49 +39,93 @@ const Form = styled.div`
   flex-direction: column;
   color: white;
   font-family: monospace;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   font-size: large;
-  border: 2px solid pink;
+  box-shadow: 15px 15px 50px 15px #00000045;
 `;
 
 const FormDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  left: -18px;
+`;
+
+const Button1 = styled.button`
+  color: white;
+  background-color: transparent;
+  margin: 10px;
+  position: relative;
+  left: 18px;
 `;
 
 const Auth = () => {
-    const isSignup = false;
-    const handleSubmit = () =>{
-        
-    };
+  const [showPassword, setShowPassword] = useState("false");
 
-    const handleChange = () => {
+  const handleShowPassword = () =>
+    setShowPassword((prevShowPassword) => !prevShowPassword);
 
-    };
-  return ( 
+  const [isSignup, setSignup] = useState("false");
+
+  const switchMode = () => {
+    setSignup((prevIsSignup) => !prevIsSignup);
+  };
+
+  const handleSubmit = () => {};
+
+  const handleChange = () => {};
+
+  return (
     <MainDiv>
       <Form>
-          <h1> { isSignup ? 'Sign up' : 'Sign in' }</h1>
-        <Avatar >
+        <h1> {isSignup ? "Sign up" : "Sign in"}</h1>
+        <Avatar>
           <LockOutlinedIcon />
         </Avatar>
-        <form >
-            <FormDiv>
-                  { isSignup && (
-            <>
-              <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
-              <Input name="lastName" label="Last Name" handleChange={handleChange} half />
-            </>
+        <form>
+          <FormDiv>
+            {isSignup && (
+              <>
+                <Input
+                  name="firstName"
+                  label="First Name"
+                  handleChange={handleChange}
+                  autoFocus
+                />
+                <Input
+                  name="lastName"
+                  label="Last Name"
+                  handleChange={handleChange}
+                />
+              </>
             )}
-            <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
-            <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
-            { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
-            </FormDiv>
-            <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-            { isSignup ? 'Sign Up' : 'Sign In' }
+            <Input
+              name="email"
+              label="Email Address"
+              handleChange={handleChange}
+              type="email"
+            />
+            <Input
+              name="password"
+              label="Password"
+              handleChange={handleChange}
+              type={showPassword ? "text" : "password"}
+              handleShowPassword={handleShowPassword}
+            />
+            {isSignup && (
+              <Input
+                name="confirmPassword"
+                label="Repeat Password"
+                handleChange={handleChange}
+                type="password"
+                style={{ color: "white" }}
+              />
+            )}
+          </FormDiv>
+
+          <Button type="submit" fullWidth variant="contained" color="primary">
+            {isSignup ? "Sign Up" : "Sign In"}
           </Button>
+
           {/* <GoogleLogin
             clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
             render={(renderProps) => (
@@ -88,12 +137,14 @@ const Auth = () => {
             onFailure={googleError}
             cookiePolicy="single_host_origin"
           />
-            <Grid container justify="flex-end"> */}
-            {/* <Grid item>
-              <Button onClick={switchMode}>
-                { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
-              </Button>
-            </Grid> */}
+            // <Grid container justify="flex-end"> */}
+          <Grid item>
+            <Button1 onClick={switchMode}>
+              {isSignup
+                ? "Already have an account? Sign in"
+                : "Don't have an account? Sign Up"}
+            </Button1>
+          </Grid>
           {/* </Grid> */}
         </form>
       </Form>
