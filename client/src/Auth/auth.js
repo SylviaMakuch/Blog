@@ -44,7 +44,7 @@ const Form = styled.div`
   font-family: monospace;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
+  font-size: 20px;
   box-shadow: 15px 15px 50px 15px #00000045;
 `;
 
@@ -53,13 +53,12 @@ const FormDiv = styled.div`
   left: -18px;
 `;
 
+
 const Button1 = styled.button`
   height: 40px;
   color: white;
   background-color: transparent;
   margin: 10px;
-  position: relative;
-  left: 18;
 `;
 const Lockimg = styled.img`
   height: 50px;
@@ -79,10 +78,15 @@ const Auth = () => {
   };
 
   const handleSubmit = () => {};
+  const handleChange = () => {};
 
+  const googleSuccess = () => {
+      console.log("Google Sing in was successful!")
+  };
 
-  const googleSuccess = () => {};
-  const googleError = () => {};
+  const googleError = () => {
+      console.log("Google Sign In was not successful! Try Again!")
+  };
 
   return (
     <MainDiv>
@@ -132,12 +136,12 @@ const Auth = () => {
             )}
           </FormDiv>
 
-          <Button type="submit" fullWidth variant="contained" color="primary">
+          <Button type="submit" fullWidth variant="contained" color="primary" style={{marginBottom: "5px"}}>
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
 
           <GoogleLogin
-            clientId="GOOGLE ID"
+            clientId="831530185138-pu2r2ks68m1otqfod1gk6etvf7shnlcg.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
                 color="primary"
@@ -154,14 +158,13 @@ const Auth = () => {
             onFailure={googleError}
             cookiePolicy="single_host_origin"
           />
-          <Grid container justify="flex-end">
-            <Grid item>
+          <Grid container>
               <Button1 onClick={switchMode}>
                 {isSignup
                   ? "Already have an account? Sign in"
                   : "Don't have an account? Sign Up"}
               </Button1>
-            </Grid>
+   
           </Grid>
         </form>
       </Form>
