@@ -10,9 +10,11 @@ import {
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+// import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import styled from "styled-components";
 import Input from "./input";
+import lock from "../components/media/lock.svg";
+import Icon from "./icon";
 
 const MainDiv = styled.div`
   display: flex;
@@ -21,6 +23,7 @@ const MainDiv = styled.div`
   flex-wrap: nowrap;
   flex-direction: column;
   align-items: center;
+  align-content: center;
 `;
 
 const Form = styled.div`
@@ -41,7 +44,7 @@ const Form = styled.div`
   font-family: monospace;
   justify-content: center;
   align-items: center;
-  font-size: large;
+  font-size: 50px;
   box-shadow: 15px 15px 50px 15px #00000045;
 `;
 
@@ -51,11 +54,16 @@ const FormDiv = styled.div`
 `;
 
 const Button1 = styled.button`
+  height: 40px;
   color: white;
   background-color: transparent;
   margin: 10px;
   position: relative;
-  left: 18px;
+  left: 18;
+`;
+const Lockimg = styled.img`
+  height: 50px;
+  width: 50px;
 `;
 
 const Auth = () => {
@@ -72,14 +80,16 @@ const Auth = () => {
 
   const handleSubmit = () => {};
 
-  const handleChange = () => {};
+
+  const googleSuccess = () => {};
+  const googleError = () => {};
 
   return (
     <MainDiv>
       <Form>
         <h1> {isSignup ? "Sign up" : "Sign in"}</h1>
         <Avatar>
-          <LockOutlinedIcon />
+          <Lockimg src={lock} />
         </Avatar>
         <form>
           <FormDiv>
@@ -126,10 +136,17 @@ const Auth = () => {
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
 
-          {/* <GoogleLogin
-            clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
+          <GoogleLogin
+            clientId="GOOGLE ID"
             render={(renderProps) => (
-              <Button color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
+              <Button
+                color="primary"
+                fullWidth
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                startIcon={<Icon />}
+                variant="contained"
+              >
                 Google Sign In
               </Button>
             )}
@@ -137,15 +154,15 @@ const Auth = () => {
             onFailure={googleError}
             cookiePolicy="single_host_origin"
           />
-            // <Grid container justify="flex-end"> */}
-          <Grid item>
-            <Button1 onClick={switchMode}>
-              {isSignup
-                ? "Already have an account? Sign in"
-                : "Don't have an account? Sign Up"}
-            </Button1>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Button1 onClick={switchMode}>
+                {isSignup
+                  ? "Already have an account? Sign in"
+                  : "Don't have an account? Sign Up"}
+              </Button1>
+            </Grid>
           </Grid>
-          {/* </Grid> */}
         </form>
       </Form>
     </MainDiv>
