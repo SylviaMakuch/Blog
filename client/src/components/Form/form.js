@@ -27,12 +27,12 @@ const ButtonDiv = styled.div`
   justify-content: center;
 `;
 
-const GoogleFonts = importGoogleFonts(
-  createGlobalStyle,
-  null,
-  ["Abril Fatface"],
-  ["Aclonica"]
-);
+// const GoogleFonts = importGoogleFonts(
+//   createGlobalStyle,
+//   null,
+//   ["Abril Fatface"],
+//   ["Aclonica"]
+// );
 
 const Header = styled.h1`
   font-family: "Abril Fatface";
