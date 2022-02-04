@@ -69,7 +69,7 @@ const Auth = () => {
     setSignup((prevIsSignup) => !prevIsSignup);
   };
 
-  const handleSubmit = () => {};
+  // const handleSubmit = () => {};
   const handleChange = () => {};
   const dispatch = useDispatch();
 
@@ -122,6 +122,7 @@ const Auth = () => {
             <Input
               name="password"
               label="Password"
+              autocomplete="on"
               handleChange={handleChange}
               type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
