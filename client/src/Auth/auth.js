@@ -80,6 +80,7 @@ const Auth = () => {
     try {
       dispatch({ type: "AUTH", data: { result, token } });
     //   history.push("/");
+    console.log('It was a successful login!')
     } catch (error) {
       console.log(error);
     }
@@ -152,7 +153,8 @@ const Auth = () => {
             clientId="831530185138-9a1suordsgu512o279sop8ggl4snqb99.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
-                color="primary"
+             
+              color="primary"
                 fullWidth
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
