@@ -17,13 +17,25 @@ const MainDiv = styled.div`
   flex-direction: column;
   align-items: center;
   align-content: center;
+  margin: 0;
+  background: linear-gradient(
+    247.39deg,
+    #af47ef 0%,
+    rgba(24, 0, 62, 0.929213) 46.22%,
+    rgba(67, 86, 135, 0.86) 100%
+  );
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
 `;
 
 const Form = styled.div`
   background-image: linear-gradient(
     to bottom,
-    #fc00ffd6 0%,
-    #ce7effa1 51%,
+    #ffffffd6 0%,
+    #ce7effa1 60%,
     #140d18ad 100%
   );
   height: 700px;
@@ -33,7 +45,7 @@ const Form = styled.div`
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  color: white;
+  color: red;
   font-family: monospace;
   justify-content: center;
   align-items: center;

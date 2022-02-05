@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AppBar, Typography, Toolbar, Avatar, Button } from "@material-ui/core";
 import Auth from "../../Auth/auth";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const Profile = styled.div`
   display: flex;
@@ -15,8 +16,15 @@ const Profile = styled.div`
   width: 100%;
 `;
 const Navbar = () => {
+  const logout = () => {};
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  console.log(user);
+
+useEffect(() => {
+  const token = user?.token;
+
+  setUser( JSON.parse(localStorage.getItem("profile")))
+} ,[]);
+
   return (
     <AppBar position="static" style={{ backgroundColor: "#37303c36" }}>
       <Toolbar>
@@ -24,13 +32,13 @@ const Navbar = () => {
           <Profile>
             <Typography
               variant="h6"
-              style={{
-                margin: "10px",
-              }}
+          
             >
               {user?.result.name.charAt(0)}{" "}
             </Typography>
-            <Avatar alt={user?.result.name} src={user?.result.imageUrl}>
+            <Avatar alt={user?.result.name} src={user?.result.imageUrl}    style={{
+                margin: "10px", borderRadius: "50%", border: "2px solid white"
+              }}>
               {user?.result.name.charAt(0)}
             </Avatar>
             <Button variant="contained" color="secondary">
