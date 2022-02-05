@@ -1,10 +1,11 @@
-const authReducer = (state = {authData: null} , action) => {
+const authReducer = (state = { authData: null }, action) => {
   switch (action.type) {
     case "AUTH":
+      localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
       console.log(action?.data);
-      return state;
+      return { ...state, authData: action?.data };
     default:
-        return state;
+      return state;
   }
 };
-export default authReducer
+export default authReducer;
