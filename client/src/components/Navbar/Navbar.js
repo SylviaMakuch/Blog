@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AppBar, Typography, Toolbar, Avatar, Button } from "@material-ui/core";
-import Auth from "../../Auth/auth";
+import Auth from "./../Auth/auth";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Profile = styled.div`
   display: flex;
@@ -19,18 +19,22 @@ const Profile = styled.div`
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    navigate('/', {replace: true});
+    navigate('/auth', {replace: true});
     setUser(null)
   };
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
-  // useEffect(() => {
-  //   const token = user?.token;
+  useEffect(() => {
+    const token = user?.token;
 
-  //   setUser(JSON.parse(localStorage.getItem("profile")));
-  // }, []);
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, [location]);
+
+  //want to use this when we swtich from /auth-->/ .: useLocation
 
   return (
     <AppBar position="static" style={{ backgroundColor: "#37303c36" }}>
