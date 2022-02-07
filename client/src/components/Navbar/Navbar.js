@@ -5,43 +5,51 @@ import { AppBar, Typography, Toolbar, Avatar, Button } from "@material-ui/core";
 import Auth from "../../Auth/auth";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Profile = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  background: #37303c36;
+  /* background: #37303c36; */
   height: 80px;
   width: 100%;
 `;
 const Navbar = () => {
-  const logout = () => {};
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate('/', {replace: true});
+    setUser(null)
+  };
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
-useEffect(() => {
-  const token = user?.token;
+  // useEffect(() => {
+  //   const token = user?.token;
 
-  setUser( JSON.parse(localStorage.getItem("profile")))
-} ,[]);
+  //   setUser(JSON.parse(localStorage.getItem("profile")));
+  // }, []);
 
   return (
     <AppBar position="static" style={{ backgroundColor: "#37303c36" }}>
       <Toolbar>
         {user?.result ? (
           <Profile>
-            <Typography
-              variant="h6"
-          
+            <Typography variant="h6">{user?.result.name.charAt(0)} </Typography>
+            <Avatar
+              alt={user?.result.name}
+              src={user?.result.imageUrl}
+              style={{
+                margin: "10px",
+                borderRadius: "50%",
+                border: "2px solid white",
+              }}
             >
-              {user?.result.name.charAt(0)}{" "}
-            </Typography>
-            <Avatar alt={user?.result.name} src={user?.result.imageUrl}    style={{
-                margin: "10px", borderRadius: "50%", border: "2px solid white"
-              }}>
               {user?.result.name.charAt(0)}
             </Avatar>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" onClick={logout}>
               Logout
             </Button>
           </Profile>

@@ -43,7 +43,7 @@ const TextDiv = styled.div`
   align-content: center;
   justify-content: center;
   text-align:center;
-  margin: 100px;
+ */
 `;
 
 const MediaDiv = styled.div`
@@ -51,7 +51,7 @@ const MediaDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 100px;
+  margin: 50px;
 `;
 
 const HeroPic = styled.img`
