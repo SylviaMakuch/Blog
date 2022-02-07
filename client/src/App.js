@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from "./components/Home/home";
-import Auth from "./components/Auth/auth";
+import Auth from "./Auth/auth";
 
 const MainDiv = styled.div`
   display: flex;

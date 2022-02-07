@@ -18,6 +18,7 @@ const Input = ({
         borderRadius: "5px",
         padding: "2px",
         margin: "15px",
+        color: "white"
       }}
       color="secondary"
       name={name}

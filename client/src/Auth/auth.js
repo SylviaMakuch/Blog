@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Avatar, Button, Grid } from "@material-ui/core";
-// import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
-// import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import styled from "styled-components";
 import Input from "./input";
-import lock from "../components/media/lock.svg";
-import Icon from "../media/lock.svg";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import Lock from "../components/media/lock.svg";
+import Wave from "../components/media/wave.svg";
 
+const BackgroundImg = styled.img`
+  width: 100%;
+  height: 100vh;
+`;
 const MainDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -19,26 +21,27 @@ const MainDiv = styled.div`
   align-items: center;
   align-content: center;
   margin: 0;
-  background: linear-gradient(
+  /* background: linear-gradient(
     247.39deg,
     #af47ef 0%,
     rgba(24, 0, 62, 0.929213) 46.22%,
     rgba(67, 86, 135, 0.86) 100%
-  );
+  ); */
   background-size: cover;
-  position: relative;
+ */
   width: 100%;
   height: 100vh;
-
 `;
 
 const Form = styled.div`
-  background-image: linear-gradient(
+  position: absolute;
+  background-color: #8e8093b5;
+  /* background-image: linear-gradient(
     to bottom,
     #ffffffd6 0%,
     #ce7effa1 60%,
     #140d18ad 100%
-  );
+  ); */
   height: 700px;
   width: 400px;
   padding: 40px 80px;
@@ -46,8 +49,8 @@ const Form = styled.div`
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  color: red;
-  font-family: monospace;
+  color: white;
+  font-family: system-ui;
   justify-content: center;
   align-items: center;
   font-size: 20px;
@@ -62,16 +65,25 @@ const FormDiv = styled.div`
 const Button1 = styled.button`
   height: 40px;
   color: white;
-  background-color: transparent;
+  background-image: linear-gradient( to bottom,#00dbde 0%,#0072ff 51%,#00dbde 100%);
   margin: 10px;
 `;
-const Lockimg = styled.img`
+const Locking = styled.img`
   height: 50px;
   width: 50px;
 `;
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const Auth = () => {
-  const navigate =useNavigate();
+  const [registerData, setRegisterData] = useState(initialState);
+
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState("false");
 
   const handleShowPassword = () =>
@@ -83,7 +95,9 @@ const Auth = () => {
     setSignup((prevIsSignup) => !prevIsSignup);
   };
 
-  // const handleSubmit = () => {};
+  const handleSubmit = () => {
+    console.log(registerData);
+  };
   const handleChange = () => {};
   const dispatch = useDispatch();
 
@@ -93,10 +107,9 @@ const Auth = () => {
 
     try {
       dispatch({ type: "AUTH", data: { result, token } });
-    //   history.push("/");
-    console.log('It was a successful login!')
-    navigate('/', {replace: true});
-  
+      //   history.push("/");
+      console.log("It was a successful login!");
+      navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
     }
@@ -105,13 +118,13 @@ const Auth = () => {
   const googleError = () =>
     alert("Google Sign In was unsuccessful. Try again later");
 
-
   return (
     <MainDiv>
+      <BackgroundImg src={Wave} />
       <Form>
         <h1> {isSignup ? "Sign up" : "Sign in"}</h1>
         <Avatar>
-          <Lockimg src={lock} />
+          <Locking src={Lock} />
         </Avatar>
         <form>
           <FormDiv>
@@ -122,6 +135,7 @@ const Auth = () => {
                   label="First Name"
                   handleChange={handleChange}
                   autoFocus
+                  style={{ color: "white" }}
                 />
                 <Input
                   name="lastName"
@@ -160,7 +174,8 @@ const Auth = () => {
             fullWidth
             variant="contained"
             color="primary"
-            style={{ marginBottom: "8px" }}
+            style={{ marginBottom: "8px", backgroundColor: "#923fb5" }}
+            onClick={handleSubmit}
           >
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
@@ -169,12 +184,12 @@ const Auth = () => {
             clientId="831530185138-9a1suordsgu512o279sop8ggl4snqb99.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
-             
-              color="primary"
+                color="primary"
+                // style={{backgroundColor:"#923fb5"}}
                 fullWidth
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
-                startIcon={<Icon />}
+                // startIcon={<Icon />}
                 variant="contained"
               >
                 Google Sign In
