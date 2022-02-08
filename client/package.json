@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "bcrypt": "^5.0.1",
     "get-google-fonts": "^1.2.2",
     "import-google-fonts": "^0.0.2",
     "react": "^17.0.2",
