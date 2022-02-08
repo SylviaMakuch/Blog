@@ -65,7 +65,12 @@ const FormDiv = styled.div`
 const Button1 = styled.button`
   height: 40px;
   color: white;
-  background-image: linear-gradient( to bottom,#00dbde 0%,#0072ff 51%,#00dbde 100%);
+  background-image: linear-gradient(
+    to bottom,
+    #00dbde 0%,
+    #0072ff 51%,
+    #00dbde 100%
+  );
   margin: 10px;
 `;
 const Locking = styled.img`
@@ -81,25 +86,34 @@ const initialState = {
 };
 
 const Auth = () => {
-  const [registerData, setRegisterData] = useState(initialState);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [registerData, setRegisterData] = useState(initialState);
   const [showPassword, setShowPassword] = useState("false");
+  const [isSignup, setSignup] = useState("false");
 
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
-
-  const [isSignup, setSignup] = useState("false");
 
   const switchMode = () => {
     setSignup((prevIsSignup) => !prevIsSignup);
   };
 
-  const handleSubmit = () => {
-    console.log(registerData);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(isSignup){
+      dispatch(signup(registerData, navigate('/', {replace: true}));
+
+    }
+    else{
+
+    }
   };
-  const handleChange = () => {};
-  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setRegisterData({ ...registerData, [e.target.name]: e.target.value });
+  };
+
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
@@ -107,8 +121,6 @@ const Auth = () => {
 
     try {
       dispatch({ type: "AUTH", data: { result, token } });
-      //   history.push("/");
-      console.log("It was a successful login!");
       navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
@@ -158,6 +170,7 @@ const Auth = () => {
               type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
             />
+            
             {isSignup && (
               <Input
                 name="confirmPassword"
