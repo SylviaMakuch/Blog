@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import Lock from "../components/media/lock.svg";
 import Wave from "../components/media/wave.svg";
+import { signin, signout } from "../actions/auth";
 
 const BackgroundImg = styled.img`
   width: 100%;
@@ -102,8 +103,7 @@ const Auth = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(isSignup){
-      dispatch(signup(registerData, navigate('/', {replace: true}));
-
+      dispatch(signup(registerData, navigate('/', {replace: true})));
     }
     else{
 
