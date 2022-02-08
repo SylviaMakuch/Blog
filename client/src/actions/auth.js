@@ -1,13 +1,14 @@
 import * as api from '../API/index';
 import { useNavigate } from "react-router";
-const navigate = useNavigate();
 
 export const signin = (registerData, navigate) => async(dispatch)=> {
+    const navigate = useNavigate();
+
 try{
     navigate('/', {replace: true})
 }
 catch{
-console.log(error)
+console.log('error')
 }};
 
 
@@ -16,5 +17,5 @@ export const signout = (registerData,navigate) => async(dispatch)=> {
         navigate('/', {replace: true})
     }
     catch{
-        console.log(error)
+        console.log('error')
         }};
