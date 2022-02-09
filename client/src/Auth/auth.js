@@ -92,6 +92,7 @@ const Auth = () => {
   const [registerData, setRegisterData] = useState(initialState);
   const [showPassword, setShowPassword] = useState("false");
   const [isSignup, setSignup] = useState("false");
+  // import signup form
 
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -102,12 +103,12 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(isSignup){
-      dispatch(signup(registerData, navigate('/', {replace: true})));
-    }
-    else{
+    // if(isSignup){
+    //   dispatch(signup(registerData, navigate('/', {replace: true})));
+    // }
+    // else{
 
-    }
+    // }
   };
 
   const handleChange = (e) => {

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 
 export const signin = (registerData, navigate) => async(dispatch)=> {
     const navigate = useNavigate();
-
 try{
     navigate('/', {replace: true})
 }
