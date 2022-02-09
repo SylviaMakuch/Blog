@@ -74,6 +74,8 @@ export const deletePost = async (req, res) => {
 export const likePost = async (req, res) => {
   const { id } = req.params;
 
+  if (!req.userId) return res.json({ message: "Unathenticated !" });
+
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No post with id: ${id}`);
 
@@ -89,3 +91,5 @@ export const likePost = async (req, res) => {
 };
 
 export default router;
+
+//  req.userId property from the middleware will give access to likepost, so essentially it is giving access to verifying the user
