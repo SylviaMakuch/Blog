@@ -6,6 +6,7 @@ import Auth from "../../Auth/auth";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
+import decode from 'jwt-decode';
 
 const Profile = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -31,7 +33,13 @@ const Navbar = () => {
   useEffect(() => {
     const token = user?.token;
 
-    setUser(JSON.parse(localStorage.getItem("profile")));
+    if (token) {
+      const decodedToken = decode(token);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+
+    setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
   //want to use this when we swtich from /auth-->/ .: useLocation
