@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import Lock from "../components/media/lock.svg";
 import Wave from "../components/media/wave.svg";
-import { signin, signout } from "../actions/auth";
+import { signin, signup } from "../actions/auth";
 
 const BackgroundImg = styled.img`
   width: 100%;
@@ -99,16 +99,17 @@ const Auth = () => {
 
   const switchMode = () => {
     setSignup((prevIsSignup) => !prevIsSignup);
+    setShowPassword(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if(isSignup){
-    //   dispatch(signup(registerData, navigate('/', {replace: true})));
-    // }
-    // else{
+    if(isSignup){
+      dispatch(signup(registerData, navigate('/', {replace: true})));
+    }
+    else{
 
-    // }
+    }
   };
 
   const handleChange = (e) => {

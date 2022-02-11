@@ -8,5 +8,5 @@ export const updatePost = (id, updatedPost) =>
   API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
-export const signin = (FormData) => API.post("/users/signin", FormData);
-export const signup = (FormData) => API.post("/users/signup", FormData);
+export const signin = (registerData) => API.post("/users/signin", registerData);
+export const signup = (registerData) => API.post("/users/signup", registerData);
