@@ -2,7 +2,6 @@ import React from "react";
 import {
   CardActions,
   CardContent,
-  CardMedia,
   Button,
 } from "@material-ui/core/";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";

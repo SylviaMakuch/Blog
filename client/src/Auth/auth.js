@@ -13,6 +13,7 @@ const BackgroundImg = styled.img`
   width: 100%;
   height: 100vh;
 `;
+
 const MainDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -74,10 +75,12 @@ const Button1 = styled.button`
   );
   margin: 10px;
 `;
+
 const Locking = styled.img`
   height: 50px;
   width: 50px;
 `;
+
 const initialState = {
   firstName: "",
   lastName: "",
@@ -92,7 +95,6 @@ const Auth = () => {
   const [registerData, setRegisterData] = useState(initialState);
   const [showPassword, setShowPassword] = useState("false");
   const [isSignup, setSignup] = useState("false");
-  // import signup form
 
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -104,18 +106,16 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(isSignup){
-      dispatch(signup(registerData, navigate('/', {replace: true})));
-    }
-    else{
-
+    if (isSignup) {
+      dispatch(signup(registerData, navigate("/", { replace: true })));
+    } else {
+      dispatch(signin(registerData, navigate("/", { replace: true })));
     }
   };
 
   const handleChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
-
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
@@ -172,7 +172,7 @@ const Auth = () => {
               type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
             />
-            
+
             {isSignup && (
               <Input
                 name="confirmPassword"
