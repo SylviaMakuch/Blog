@@ -44,7 +44,7 @@ const Form = styled.div`
     #ce7effa1 60%,
     #140d18ad 100%
   ); */
-  height: 700px;
+  height: 400px;
   width: 400px;
   padding: 40px 80px;
   margin: 100px;
@@ -65,7 +65,7 @@ const FormDiv = styled.div`
 `;
 
 const Button1 = styled.button`
-  height: 40px;
+  height: 60px;
   color: white;
   background-image: linear-gradient(
     to bottom,
@@ -73,7 +73,17 @@ const Button1 = styled.button`
     #0072ff 51%,
     #00dbde 100%
   );
-  margin: 10px;
+  padding: 20px;
+  margin: 20px;
+  &:hover{
+    background-image: linear-gradient(
+    to bottom,
+    #0072ff  0%,
+    #00dbde 51%,
+    #00dbde 100%
+  );
+  color: purple;
+  }
 `;
 
 const Locking = styled.img`
@@ -141,7 +151,7 @@ const Auth = () => {
           <Locking src={Lock} />
         </Avatar>
         <form>
-          <FormDiv>
+          {/* <FormDiv>
             {isSignup && (
               <>
                 <Input
@@ -182,9 +192,9 @@ const Auth = () => {
                 style={{ color: "white" }}
               />
             )}
-          </FormDiv>
+          </FormDiv> */}
 
-          <Button
+          {/* <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -193,14 +203,13 @@ const Auth = () => {
             onClick={handleSubmit}
           >
             {isSignup ? "Sign Up" : "Sign In"}
-          </Button>
+          </Button> */}
 
           <GoogleLogin
             clientId="831530185138-9a1suordsgu512o279sop8ggl4snqb99.apps.googleusercontent.com"
             render={(renderProps) => (
-              <Button
+              <Button1
                 color="primary"
-                // style={{backgroundColor:"#923fb5"}}
                 fullWidth
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
@@ -208,19 +217,19 @@ const Auth = () => {
                 variant="contained"
               >
                 Google Sign In
-              </Button>
+              </Button1>
             )}
             onSuccess={googleSuccess}
             onFailure={googleError}
             cookiePolicy="single_host_origin"
           />
-          <Grid container>
+          {/* <Grid container>
             <Button1 onClick={switchMode}>
               {isSignup
                 ? "Already have an account? Sign in"
                 : "Don't have an account? Sign Up"}
             </Button1>
-          </Grid>
+          </Grid> */}
         </form>
       </Form>
     </MainDiv>

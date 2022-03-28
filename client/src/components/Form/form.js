@@ -165,7 +165,7 @@ const Form = ({ currentId, setCurrentId }) => {
       <Forum autoComplete="off" onSubmit={handleSubmit}>
         <H3> {currentId ? "Editing your post" : "Write.."}</H3>
         <label for="Creator">Author</label>
-        <input
+        {/* <input
           type="text"
           id="author"
           name="author"
@@ -173,7 +173,7 @@ const Form = ({ currentId, setCurrentId }) => {
           onChange={(e) =>
             setPostData({ ...postData, creator: e.target.value })
           }
-        />
+        /> */}
         <label for="Title">Title:</label>
         <input
           type="text"

@@ -86,13 +86,13 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
       </div>
       <CardActions style={{ display: "flex", justifyContent: "space-evenly" }}>
-        <Button
+        {/* <Button
           size="small"
           style={{color: "#8947ef"}}
           onClick={() => dispatch(likePost(post._id))}
         >
           <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
-        </Button>
+        </Button> */}
         <Button
           size="small"
           style={{color: "#8947ef"}}
